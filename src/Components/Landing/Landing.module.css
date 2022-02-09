@@ -1,0 +1,26 @@
+.landing {
+  background-image: url("../Landing/landing4\ \(1\).jpg");
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  line-height: 250px;
+  justify-content: center;
+}
+
+.boton {
+  padding: 10px 26px;
+  color: black;
+  background-color: e63946;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 25px;
+  cursor:pointer;
+}
+.boton:hover {
+  background: fb8500;
+  box-shadow: 0 0 10px yellow, 0 0 40px yellow, 0 0 80px yellow;
+}
