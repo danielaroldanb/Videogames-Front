@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
-import styles from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getVideogames());
-  },[dispatch]);
+  }, [dispatch]);
 
   function handleClick(e) {
     e.preventDefault();
@@ -69,14 +68,13 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.total}>
-      <div className={styles.container}>
+    <div>
+      <div>
         <Link to="/create">
-          <button className={styles.buttonCreate}>Create videogame</button>
+          <button>Create videogame</button>
         </Link>
 
         <button
-          className={styles.buttonGetAll}
           onClick={(e) => {
             handleClick(e);
           }}
@@ -85,70 +83,63 @@ export default function Home() {
         </button>
       </div>
 
-      <div >
-        <h1 className={styles.title}>VIDEOGAMES</h1>
+      <div>
+        <h1>VIDEOGAMES</h1>
 
-        <div className={styles.SearchBar}>
+        <div>
           <SearchBar />
         </div>
 
-        <div className={styles.nav}>
-        <div className={styles.filters}>
+        <div>
+          <div>
+            <select onChange={(o) => handleSort(o)}>
+              <option value="default">Alphabetical order:</option>
+              <option value="asc-alfa">Ascending</option>
+              <option value="desc-alfa">Descending</option>
+            </select>
 
+            <select onChange={(o) => handleSortRating(o)}>
+              <option value="default">Order by rating:</option>
+              <option value="asc-rating"> Rating Ascending</option>
+              <option value="desc-rating">Rating Descending</option>
+            </select>
 
-          <select className={styles.menu} onChange={(o) => handleSort(o)}>
-            <option value="default">
-              Alphabetical order:</option>
-            <option value="asc-alfa">Ascending</option>
-            <option value="desc-alfa">Descending</option>
-          </select>
+            <select onChange={(g) => handlefilterByGenres(g)}>
+              <option value="default">Choose the genres:</option>
+              <option value="Indie">Indie</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Strategy">Strategy</option>
+              <option value="RPG">RPG</option>
+              <option value="Action">Action</option>
+              <option value="Shooter">Shooter</option>
+              <option value="Casual">Casual</option>
+              <option value="Simulation">Simulation</option>
+              <option value="Puzzle">Puzzle</option>
+              <option value="Arcade">Arcade</option>
+              <option value="Platformer">Platformer</option>
+              <option value="Racing">Racing</option>
+              <option value="Massively Multiplayer">
+                Massively Multiplayer
+              </option>
+              <option value="Fighting">Fighting</option>
+              <option value="Sports">Sports</option>
+              <option value="Family">Family</option>
+              <option value="Board Games">Board Games</option>
+              <option value="Educational">Educational</option>
+              <option value="Card">Card</option>
+            </select>
 
-          <select  className={styles.menu} onChange={(o) => handleSortRating(o)}>
-            <option value="default"  >
-              Order by rating:
-            </option>
-            <option value="asc-rating"> Rating Ascending</option>
-            <option value="desc-rating">Rating Descending</option>
-          </select>
-
-          <select  className={styles.menu} onChange={(g) => handlefilterByGenres(g)}>
-            <option value="default"  >
-              Choose the genres:
-            </option>
-            <option value="Indie">Indie</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Strategy">Strategy</option>
-            <option value="RPG">RPG</option>
-            <option value="Action">Action</option>
-            <option value="Shooter">Shooter</option>
-            <option value="Casual">Casual</option>
-            <option value="Simulation">Simulation</option>
-            <option value="Puzzle">Puzzle</option>
-            <option value="Arcade">Arcade</option>
-            <option value="Platformer">Platformer</option>
-            <option value="Racing">Racing</option>
-            <option value="Massively Multiplayer">Massively Multiplayer</option>
-            <option value="Fighting">Fighting</option>
-            <option value="Sports">Sports</option>
-            <option value="Family">Family</option>
-            <option value="Board Games">Board Games</option>
-            <option value="Educational">Educational</option>
-            <option value="Card">Card</option>
-          </select>
-
-          <select  className={styles.menu} onChange={(o) => handlefilterByOrigin(o)}>
-            <option value="All"  >
-              Order by origin:
-            </option>
-            <option value="All">All</option>
-            <option value="API">API</option>
-            <option value="Database">Database</option>
-          </select>
-        </div>
+            <select onChange={(o) => handlefilterByOrigin(o)}>
+              <option value="All">Order by origin:</option>
+              <option value="All">All</option>
+              <option value="API">API</option>
+              <option value="Database">Database</option>
+            </select>
+          </div>
         </div>
 
         <br />
-        <div className={styles.pagination}>
+        <div>
           <Pagination
             videogamesPerPage={videogamesPerPage}
             allvideogames={allvideogames.length}
@@ -159,13 +150,11 @@ export default function Home() {
 
         <br />
 
-        <div className={styles.cards}>
+        <div>
           {gamesRenderedPerPage &&
             gamesRenderedPerPage.map((v) => {
               return (
-              
                 <Card
-                  
                   key={v.id}
                   name={v.name}
                   background_image={v.background_image}
@@ -173,7 +162,6 @@ export default function Home() {
                   rating={v.rating}
                   id={v.id}
                 />
-              
               );
             })}
         </div>
