@@ -3,7 +3,7 @@ import axios from "axios";
 export const getVideogames = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("https://videogames-drb-api.herokuapp.com/videogames");
+      const response = await axios.get("http://videogames-drb-api.herokuapp.com/videogames");
       return dispatch({
         type: "GET_VIDEOGAMES",
         payload: response.data,
@@ -33,7 +33,7 @@ export const searchByName = (name) => {
   return async function (dispatch) {
     try {
       const responses = await axios.get(
-        ` https://videogames-drb-api.herokuapp.com/videogames?name=${name}`
+        ` http://videogames-drb-api.herokuapp.com/videogames?name=${name}`
       );
       return dispatch({ type: "SEARCH_BY_NAME", payload: responses.data });
     } catch (error) {
@@ -45,7 +45,7 @@ export const searchByName = (name) => {
 export const getGenres = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("https://videogames-drb-api.herokuapp.com/genres");
+      const response = await axios.get("http://videogames-drb-api.herokuapp.com/genres");
       return dispatch({
         type: "GET_GENRES",
         payload: response.data,
@@ -59,7 +59,7 @@ export const getGenres = () => {
 export const getPlatforms = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("https://videogames-drb-api.herokuapp.com/platforms");
+      const response = await axios.get("http://videogames-drb-api.herokuapp.com/platforms");
       return dispatch({ type: "GET_PLATFORMS", payload: response.data });
     } catch (error) {
       return "Platform not found";
@@ -70,7 +70,7 @@ export const getPlatforms = () => {
 
 export const postCreate = (game) => {
   return async function (dispatch) {
-    await axios.post("https://videogames-drb-api.herokuapp.com/videogame", game);
+    await axios.post("http://videogames-drb-api.herokuapp.com/videogame", game);
     return dispatch({
       type:"POST_CREATE"
     })
@@ -80,7 +80,7 @@ export const postCreate = (game) => {
 export const getDetail=(id)=>{
   return async function (dispatch){
     try{
-      let response=await axios.get("https://videogames-drb-api.herokuapp.com/videogame/"+id)
+      let response=await axios.get("http://videogames-drb-api.herokuapp.com/videogame/"+id)
       return dispatch({type:"GET_DETAIL",payload:response.data})
     }
     catch(error){return "Not found"}
