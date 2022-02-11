@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchByName } from "../../store/actions/index";
+import styled from "styled-components";
+
 
 export default function SearchBar() {
   const dispatch = useDispatch();

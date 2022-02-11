@@ -12,6 +12,56 @@ import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 import Pagination from "../Pagination/Pagination";
 import SearchBar from "../SearchBar/SearchBar";
+import styled from "styled-components";
+import img from "../../assets/landing.jpg";
+
+const Content = styled.div`
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100vw;
+  height: 92vh;
+  overflow-x: hidden;
+`;
+
+const Container = styled.div`
+  position: absolute;
+  top: 4vh;
+  width: 100%;
+  height: 100%;
+  left:3%;
+  
+`;
+const Filters = styled.div`
+  position: relative;
+  left: 45vh;
+  width: 50%;
+  border: 1px solid green;
+`;
+
+const Cards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const Pagine = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Items = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const Search = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -68,89 +118,84 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <div>
-        <Link to="/create">
-          <button>Create videogame</button>
-        </Link>
-
-        <button
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          Get all videogames
-        </button>
-      </div>
-
-      <div>
-        <h1>VIDEOGAMES</h1>
-
-        <div>
-          <SearchBar />
-        </div>
-
-        <div>
+    <Content>
+      <Link to="/create">
+        <button>Create videogame</button>
+      </Link>
+      <Container>
+        <Filters>
+          <Search>
+            <SearchBar />
+            <button
+              onClick={(e) => {
+                handleClick(e);
+              }}
+            >
+              Get all videogames
+            </button>
+          </Search>
           <div>
-            <select onChange={(o) => handleSort(o)}>
-              <option value="default">Alphabetical order:</option>
-              <option value="asc-alfa">Ascending</option>
-              <option value="desc-alfa">Descending</option>
-            </select>
+            <br></br>
+            <Items>
+              <select onChange={(o) => handleSort(o)}>
+                <option value="default">Alphabetical order:</option>
+                <option value="asc-alfa">Ascending</option>
+                <option value="desc-alfa">Descending</option>
+              </select>
 
-            <select onChange={(o) => handleSortRating(o)}>
-              <option value="default">Order by rating:</option>
-              <option value="asc-rating"> Rating Ascending</option>
-              <option value="desc-rating">Rating Descending</option>
-            </select>
+              <select onChange={(o) => handleSortRating(o)}>
+                <option value="default">Order by rating:</option>
+                <option value="asc-rating"> Rating Ascending</option>
+                <option value="desc-rating">Rating Descending</option>
+              </select>
 
-            <select onChange={(g) => handlefilterByGenres(g)}>
-              <option value="default">Choose the genres:</option>
-              <option value="Indie">Indie</option>
-              <option value="Adventure">Adventure</option>
-              <option value="Strategy">Strategy</option>
-              <option value="RPG">RPG</option>
-              <option value="Action">Action</option>
-              <option value="Shooter">Shooter</option>
-              <option value="Casual">Casual</option>
-              <option value="Simulation">Simulation</option>
-              <option value="Puzzle">Puzzle</option>
-              <option value="Arcade">Arcade</option>
-              <option value="Platformer">Platformer</option>
-              <option value="Racing">Racing</option>
-              <option value="Massively Multiplayer">
-                Massively Multiplayer
-              </option>
-              <option value="Fighting">Fighting</option>
-              <option value="Sports">Sports</option>
-              <option value="Family">Family</option>
-              <option value="Board Games">Board Games</option>
-              <option value="Educational">Educational</option>
-              <option value="Card">Card</option>
-            </select>
+              <select onChange={(g) => handlefilterByGenres(g)}>
+                <option value="default">Choose the genres:</option>
+                <option value="Indie">Indie</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Strategy">Strategy</option>
+                <option value="RPG">RPG</option>
+                <option value="Action">Action</option>
+                <option value="Shooter">Shooter</option>
+                <option value="Casual">Casual</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Arcade">Arcade</option>
+                <option value="Platformer">Platformer</option>
+                <option value="Racing">Racing</option>
+                <option value="Massively Multiplayer">
+                  Massively Multiplayer
+                </option>
+                <option value="Fighting">Fighting</option>
+                <option value="Sports">Sports</option>
+                <option value="Family">Family</option>
+                <option value="Board Games">Board Games</option>
+                <option value="Educational">Educational</option>
+                <option value="Card">Card</option>
+              </select>
 
-            <select onChange={(o) => handlefilterByOrigin(o)}>
-              <option value="All">Order by origin:</option>
-              <option value="All">All</option>
-              <option value="API">API</option>
-              <option value="Database">Database</option>
-            </select>
+              <select onChange={(o) => handlefilterByOrigin(o)}>
+                <option value="All">Order by origin:</option>
+                <option value="All">All</option>
+                <option value="API">API</option>
+                <option value="Database">Database</option>
+              </select>
+            </Items>
           </div>
-        </div>
-
+        </Filters>
         <br />
-        <div>
+        <Pagine>
           <Pagination
             videogamesPerPage={videogamesPerPage}
             allvideogames={allvideogames.length}
             pagination={pagination}
             currentPage={currentPage}
           />
-        </div>
+        </Pagine>
 
         <br />
 
-        <div>
+        <Cards>
           {gamesRenderedPerPage &&
             gamesRenderedPerPage.map((v) => {
               return (
@@ -164,8 +209,8 @@ export default function Home() {
                 />
               );
             })}
-        </div>
-      </div>
-    </div>
+        </Cards>
+      </Container>
+    </Content>
   );
 }
