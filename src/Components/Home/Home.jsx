@@ -37,7 +37,7 @@ const Filters = styled.div`
   position: relative;
   left: 45vh;
   width: 50%;
-  border: 1px solid green;
+ 
 `;
 
 const Cards = styled.div`
@@ -62,6 +62,27 @@ const Search = styled.div`
   display: flex;
   justify-content: center;
 `;
+const Button = styled.button`
+position:relative;
+margin-left:10%;
+`;
+
+const Select = styled.select`
+display: inline-block;
+width: 12vw;
+cursor: pointer;
+height: 4vh;
+outline: 0;
+border: 0;
+border-radius: 5%;
+background: rgba(19, 19, 31, 1);
+color: white;
+font-size: 0.9em;
+letter-spacing: 1px;
+border: 2px solid #7364d2;
+position: relative;
+`;
+
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -126,30 +147,30 @@ export default function Home() {
         <Filters>
           <Search>
             <SearchBar />
-            <button
+            <Button
               onClick={(e) => {
                 handleClick(e);
               }}
             >
-              Get all videogames
-            </button>
+              Reset filters
+            </Button>
           </Search>
           <div>
             <br></br>
             <Items>
-              <select onChange={(o) => handleSort(o)}>
-                <option value="default">Alphabetical order:</option>
+              <Select onChange={(o) => handleSort(o)}>
+                <option  value="default">Alphabetical order:</option>
                 <option value="asc-alfa">Ascending</option>
                 <option value="desc-alfa">Descending</option>
-              </select>
+              </Select>
 
-              <select onChange={(o) => handleSortRating(o)}>
+              <Select onChange={(o) => handleSortRating(o)}>
                 <option value="default">Order by rating:</option>
                 <option value="asc-rating"> Rating Ascending</option>
                 <option value="desc-rating">Rating Descending</option>
-              </select>
+              </Select>
 
-              <select onChange={(g) => handlefilterByGenres(g)}>
+              <Select onChange={(g) => handlefilterByGenres(g)}>
                 <option value="default">Choose the genres:</option>
                 <option value="Indie">Indie</option>
                 <option value="Adventure">Adventure</option>
@@ -172,14 +193,14 @@ export default function Home() {
                 <option value="Board Games">Board Games</option>
                 <option value="Educational">Educational</option>
                 <option value="Card">Card</option>
-              </select>
+              </Select>
 
-              <select onChange={(o) => handlefilterByOrigin(o)}>
+              <Select onChange={(o) => handlefilterByOrigin(o)}>
                 <option value="All">Order by origin:</option>
                 <option value="All">All</option>
                 <option value="API">API</option>
                 <option value="Database">Database</option>
-              </select>
+              </Select>
             </Items>
           </div>
         </Filters>

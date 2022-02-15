@@ -13,7 +13,7 @@ const Social = styled.div`
   right: 1vw;
   top: 1vh;
   margin-left: 4rem;
-  &:hover
+  
 `;
 const Title = styled.h1`
   font-family:"Georgia";
