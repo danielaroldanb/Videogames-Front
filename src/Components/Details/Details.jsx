@@ -3,6 +3,105 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail } from "../../store/actions/index";
 import { useEffect } from "react";
+import styled from "styled-components";
+import img from "../../assets/landing.jpg";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const Name = styled.div`
+  display: flex;
+  justify-content: center;
+  text-shadow: 5px 5px 5px gray;
+  color: white;
+`;
+const Image = styled.div`
+display: flex;
+justify-content: center;
+`;
+
+const Img = styled.img`
+width: 20vw;
+height: 30vh;
+border-radius: 5px;
+`;
+
+const All = styled.div`
+background-image: url(${img});
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
+width: 100vw;
+height: 92vh;
+overflow-x: hidden;
+`;
+const ContainerDes = styled.div`
+  background-color: #ced4da;
+  width: 90%;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  resize: none;
+`;
+
+const Released = styled.div`
+  font-size: 20px;
+  color: white;
+`;
+const ContainerRating = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Rating = styled.div`
+  font-size: 20px;
+  color: white;
+`;
+const ContainerReleased = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 2rem;
+`;
+
+const Description = styled.div`
+  color: black;
+  font-size: 15px;
+  text-decoration: none;
+  resize: none;
+`;
+
+const ContainerPlat = styled.div`
+  color: black;
+  margin-left: 50%;
+  margin-right: 10%;
+`;
+
+const ContainerGenres = styled.div`
+  color: black;
+  margin-left: 50%;
+  margin-right: 10%;
+`;
+
+const ContainerGenrePlatform = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+`;
+
+const Platforms = styled.div`
+  text-align: center;
+  font-size: 20px;
+  color: white;
+`;
+
+const Genres = styled.div`
+  text-align: center;
+  font-size: 20px;
+  color: white;
+`;
 
 export default function Detail(props) {
   const dispatch = useDispatch();
@@ -13,91 +112,89 @@ export default function Detail(props) {
   }, [dispatch, props.match.params.id]);
 
   return (
-    <div>
-      <div>
+    <All>
+      <Container>
         <Link to="/home">
           <button>Home</button>
         </Link>
-      </div>
+      </Container>
       {videogameById.inDatabase ? (
         <div>
-          <h1>{videogameById.name} </h1>
-          <div>
-            <img src={videogameById.background_image} alt="Not found" />
-          </div>
-          <div>
-            {" "}
-            <div>Released: {videogameById.released} </div>
-          </div>
-          <div>
-            <div>Rating: {videogameById.rating} </div>
-          </div>
-          <div>
-            <div>
+          <Name>{videogameById.name} </Name>
+        <Image>
+            <Img src={videogameById.background_image} alt="Not found" />
+            </Image>
+          <ContainerReleased>
+            <Released>Released: {videogameById.released} </Released>
+          </ContainerReleased>
+          <ContainerRating>
+            <Rating>Rating: {videogameById.rating} </Rating>
+          </ContainerRating>
+          <ContainerDes>
+            <Description>
               <div
                 dangerouslySetInnerHTML={{ __html: videogameById.description }}
               />{" "}
-            </div>
-          </div>
-          <div>
-            <div>
-              <div>
+            </Description>
+          </ContainerDes>
+          <ContainerGenrePlatform>
+            <ContainerPlat>
+              <Platforms>
                 <h4>Platforms:</h4>
                 {videogameById.platforms?.map((g) => (
                   <div key={g.platform.name}>{g.platform.name}</div>
                 ))}
-              </div>
-            </div>
-            <div>
-              <div>
+              </Platforms>
+            </ContainerPlat>
+            <ContainerGenres>
+              <Genres>
                 <h4>Genres:</h4>
                 {videogameById.genres?.map((g) => (
                   <div key={g.name}>{g.name}</div>
                 ))}
-              </div>
-            </div>
-          </div>
+              </Genres>
+            </ContainerGenres>
+          </ContainerGenrePlatform>
         </div>
       ) : (
         <div>
-          <h1>{videogameById.name} </h1>
-          <div>
-            <img src={videogameById.background_image} alt="Not found" />
-          </div>
-          <div>
-            {" "}
-            <div>Released: {videogameById.released} </div>
-          </div>
-          <div>
-            <div>Rating: {videogameById.rating} </div>
-          </div>
-          <div>
-            <div>
+          <Name>{videogameById.name} </Name>
+          <Image>
+            <Img src={videogameById.background_image} alt="Not found" />
+            </Image>
+          <ContainerReleased>
+            <Released>Released: {videogameById.released} </Released>
+          </ContainerReleased>
+          <ContainerRating>
+            <Rating>Rating: {videogameById.rating} </Rating>
+          </ContainerRating>
+          <ContainerDes>
+            <Description>
               <div
                 dangerouslySetInnerHTML={{ __html: videogameById.description }}
               />{" "}
-            </div>
-          </div>
-          <div>
-            <div>
-              <div>
+            </Description>
+          </ContainerDes>
+          <ContainerGenrePlatform>
+            <ContainerPlat>
+              <Platforms>
                 <h4>Platforms:</h4>{" "}
                 {videogameById.platforms?.map((g) => (
                   <div key={g}>{g}</div>
                 ))}
-              </div>
-            </div>
-            <div>
-              <div>
+              </Platforms>
+            </ContainerPlat>
+            <ContainerGenres>
+              <Genres>
                 <h4>Genres: </h4>
                 {videogameById.genres?.map((g) => (
                   <div key={g}>{g} </div>
                 ))}
-              </div>
-            </div>
-          </div>
+              </Genres>
+            </ContainerGenres>
+          </ContainerGenrePlatform>
         </div>
       )}
-    </div>
+    </All>
   );
 }
