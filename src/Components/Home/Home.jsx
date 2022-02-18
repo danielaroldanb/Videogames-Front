@@ -15,6 +15,13 @@ import SearchBar from "../SearchBar/SearchBar";
 import styled from "styled-components";
 import img from "../../assets/landing.jpg";
 
+const ContainerCreate = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5%;
+  margin-right: 2%;
+`;
+
 const Content = styled.div`
   background-image: url(${img});
   background-repeat: no-repeat;
@@ -30,14 +37,12 @@ const Container = styled.div`
   top: 4vh;
   width: 100%;
   height: 100%;
-  left:3%;
-  
+  left: 3%;
 `;
 const Filters = styled.div`
   position: relative;
   left: 45vh;
   width: 50%;
- 
 `;
 
 const Cards = styled.div`
@@ -63,26 +68,25 @@ const Search = styled.div`
   justify-content: center;
 `;
 const Button = styled.button`
-position:relative;
-margin-left:10%;
+  position: relative;
+  margin-left: 10%;
 `;
 
 const Select = styled.select`
-display: inline-block;
-width: 12vw;
-cursor: pointer;
-height: 4vh;
-outline: 0;
-border: 0;
-border-radius: 5%;
-background: rgba(19, 19, 31, 1);
-color: white;
-font-size: 0.9em;
-letter-spacing: 1px;
-border: 2px solid #7364d2;
-position: relative;
+  display: inline-block;
+  width: 12vw;
+  cursor: pointer;
+  height: 4vh;
+  outline: 0;
+  border: 0;
+  border-radius: 5%;
+  background: rgba(19, 19, 31, 1);
+  color: white;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  border: 2px solid #7364d2;
+  position: relative;
 `;
-
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -140,9 +144,11 @@ export default function Home() {
 
   return (
     <Content>
-      <Link to="/create">
-        <button>Create videogame</button>
-      </Link>
+      <ContainerCreate>
+        <Link to="/create">
+          <button>Create videogame</button>
+        </Link>
+      </ContainerCreate>
       <Container>
         <Filters>
           <Search>
@@ -159,7 +165,7 @@ export default function Home() {
             <br></br>
             <Items>
               <Select onChange={(o) => handleSort(o)}>
-                <option  value="default">Alphabetical order:</option>
+                <option value="default">Alphabetical order:</option>
                 <option value="asc-alfa">Ascending</option>
                 <option value="desc-alfa">Descending</option>
               </Select>

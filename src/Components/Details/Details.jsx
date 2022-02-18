@@ -9,6 +9,8 @@ import img from "../../assets/landing.jpg";
 const Container = styled.div`
   display: flex;
   justify-content: flex-end;
+  margin-top: 0.5%;
+  margin-right: 2%;
 `;
 
 const Name = styled.div`
@@ -16,35 +18,38 @@ const Name = styled.div`
   justify-content: center;
   text-shadow: 5px 5px 5px gray;
   color: white;
+  font-size: 250%;
 `;
 const Image = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 `;
 
 const Img = styled.img`
-width: 20vw;
-height: 30vh;
-border-radius: 5px;
+  width: 20vw;
+  height: 30vh;
+  border-radius: 5px;
 `;
 
 const All = styled.div`
-background-image: url(${img});
-background-repeat: no-repeat;
-background-size: cover;
-position: absolute;
-width: 100vw;
-height: 92vh;
-overflow-x: hidden;
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100vw;
+  height: 92vh;
+  overflow-x: hidden;
 `;
 const ContainerDes = styled.div`
   background-color: #ced4da;
   width: 90%;
   border-radius: 5px;
   padding: 1rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 5%;
+  margin-right: 5%;
   resize: none;
+  margin-bottom:1%;
 `;
 
 const Released = styled.div`
@@ -54,6 +59,7 @@ const Released = styled.div`
 const ContainerRating = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom:0.2%;
 `;
 
 const Rating = styled.div`
@@ -75,20 +81,22 @@ const Description = styled.div`
 
 const ContainerPlat = styled.div`
   color: black;
-  margin-left: 50%;
-  margin-right: 10%;
+  width: 15vw;
+  background-color: #00000095;
+  margin-left: 35vw;
 `;
 
 const ContainerGenres = styled.div`
   color: black;
-  margin-left: 50%;
-  margin-right: 10%;
+  width: 15vw;
+  background-color: #00000095;
 `;
 
 const ContainerGenrePlatform = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
+  width: 100vw;
 `;
 
 const Platforms = styled.div`
@@ -121,9 +129,9 @@ export default function Detail(props) {
       {videogameById.inDatabase ? (
         <div>
           <Name>{videogameById.name} </Name>
-        <Image>
+          <Image>
             <Img src={videogameById.background_image} alt="Not found" />
-            </Image>
+          </Image>
           <ContainerReleased>
             <Released>Released: {videogameById.released} </Released>
           </ContainerReleased>
@@ -161,7 +169,7 @@ export default function Detail(props) {
           <Name>{videogameById.name} </Name>
           <Image>
             <Img src={videogameById.background_image} alt="Not found" />
-            </Image>
+          </Image>
           <ContainerReleased>
             <Released>Released: {videogameById.released} </Released>
           </ContainerReleased>

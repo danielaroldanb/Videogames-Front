@@ -7,72 +7,78 @@ import styled from "styled-components";
 import img from "../../assets/landing.jpg";
 
 const All = styled.div`
-background-image: url(${img});
-background-repeat: no-repeat;
-background-size: cover;
-position: absolute;
-width: 100vw;
-height: 92vh;
-overflow-x: hidden;
+  background-image: url(${img});
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100vw;
+  height: 92vh;
+  overflow-x: hidden;
 `;
 
 const Button = styled.button`
-padding: 10px 26px;
-color: black;
-background-color: e63946;
-border-radius: 5px;
-font-weight: bold;
-font-size: 11px;
-cursor: pointer;
+  padding: 10px 26px;
+  color: black;
+  background-color: e63946;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
 `;
 
 const Container = styled.div`
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 const Label = styled.label`
-color:white
+  color: white;
 `;
 
 const Title = styled.div`
-text-align: center;
-color:white;
-text-shadow: 5px 5px 5px pink;
+  text-align: center;
+  color: white;
+  text-shadow: 5px 5px 5px pink;
 `;
 const Input = styled.input`
-display: block;
-justify-content:center;
-height:2rem;
-border-radius: 10px;
-background-color:white;
-padding-left: 20%;
-width: 70vh;
+  display: block;
+  justify-content: center;
+  height: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  padding-left: 20%;
+  width: 70vh;
 `;
 const Select = styled.select`
-display: block;
-justify-content:center;
-height:2rem;
-border-radius: 10px;
-background-color:white;
-padding-left: 20%;
-width: 70vh;
+  display: block;
+  justify-content: center;
+  height: 2rem;
+  border-radius: 10px;
+  background-color: white;
+  padding-left: 20%;
+  width: 70vh;
 `;
 
 const Selected = styled.div`
-color:white;
+  color: white;
 `;
 
 const TextArea = styled.textarea`
-justify-content:center;
-height:6rem;
-border-radius: 10px;
-background-color:white;
-padding-left: 20%;
-width: 70vh;
+  justify-content: center;
+  height: 6rem;
+  border-radius: 10px;
+  background-color: white;
+  padding-left: 20%;
+  width: 70vh;
 `;
 
 const Error = styled.p`
-color:red
+  color: red;
+`;
+const ContainerHome = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5%;
+  margin-right: 2%;
 `;
 
 function control(input) {
@@ -170,10 +176,11 @@ export default function Create() {
 
   return (
     <All>
-      <Link to="/home">
-        <Button>Home</Button>
-      </Link>
-
+      <ContainerHome>
+        <Link to="/home">
+          <button>Home</button>
+        </Link>
+      </ContainerHome>
       <Title>CREATE YOUR VIDEOGAME</Title>
       <Container>
         <form onSubmit={(e) => handleSubmit(e)}>
