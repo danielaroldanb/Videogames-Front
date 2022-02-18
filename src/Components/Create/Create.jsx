@@ -3,7 +3,77 @@ import { Link, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postCreate, getGenres, getPlatforms } from "../../store/actions/index";
+import styled from "styled-components";
+import img from "../../assets/landing.jpg";
 
+const All = styled.div`
+background-image: url(${img});
+background-repeat: no-repeat;
+background-size: cover;
+position: absolute;
+width: 100vw;
+height: 92vh;
+overflow-x: hidden;
+`;
+
+const Button = styled.button`
+padding: 10px 26px;
+color: black;
+background-color: e63946;
+border-radius: 5px;
+font-weight: bold;
+font-size: 11px;
+cursor: pointer;
+`;
+
+const Container = styled.div`
+display: flex;
+justify-content: center;
+`;
+const Label = styled.label`
+color:white
+`;
+
+const Title = styled.div`
+text-align: center;
+color:white;
+text-shadow: 5px 5px 5px pink;
+`;
+const Input = styled.input`
+display: block;
+justify-content:center;
+height:2rem;
+border-radius: 10px;
+background-color:white;
+padding-left: 20%;
+width: 70vh;
+`;
+const Select = styled.select`
+display: block;
+justify-content:center;
+height:2rem;
+border-radius: 10px;
+background-color:white;
+padding-left: 20%;
+width: 70vh;
+`;
+
+const Selected = styled.div`
+color:white;
+`;
+
+const TextArea = styled.textarea`
+justify-content:center;
+height:6rem;
+border-radius: 10px;
+background-color:white;
+padding-left: 20%;
+width: 70vh;
+`;
+
+const Error = styled.p`
+color:red
+`;
 
 function control(input) {
   let errors = {};
@@ -99,76 +169,76 @@ export default function Create() {
   };
 
   return (
-    <div>
+    <All>
       <Link to="/home">
-        <button>Home</button>
+        <Button>Home</Button>
       </Link>
 
-      <h1>Create your videogame</h1>
-      <div>
+      <Title>CREATE YOUR VIDEOGAME</Title>
+      <Container>
         <form onSubmit={(e) => handleSubmit(e)}>
           <div>
-            <label>Name:</label>
-            <input
+            <Label>Name:</Label>
+            <Input
               onChange={(e) => handlechange(e)}
               type="text"
               value={input.name}
               name="name"
-            ></input>
-            {errors.name && <p>{errors.name}</p>}
+            ></Input>
+            {errors.name && <Error>{errors.name}</Error>}
           </div>
           <div>
-            <label>Description:</label>
-            <textarea
+            <Label>Description:</Label>
+            <TextArea
               onChange={(e) => handlechange(e)}
               value={input.description}
               name="description"
-            ></textarea>
-            {errors.description && <p>{errors.description}</p>}
+            ></TextArea>
+            {errors.description && <Error>{errors.description}</Error>}
           </div>
           <div>
-            <label>Image:</label>
-            <input
+            <Label>Image:</Label>
+            <Input
               onChange={(e) => handlechange(e)}
               type="text"
               value={input.background_image}
               name="background_image"
-            ></input>
+            ></Input>
           </div>
           <div>
-            <label>Relesead:</label>
-            <input
+            <Label>Relesead:</Label>
+            <Input
               onChange={(e) => handlechange(e)}
               type="text"
               value={input.released}
               name="released"
-            ></input>
-            {errors.released && <p>{errors.released}</p>}
+            ></Input>
+            {errors.released && <Error>{errors.released}</Error>}
           </div>
           <div>
-            <label>Rating:</label>
-            <input
+            <Label>Rating:</Label>
+            <Input
               onChange={(e) => handlechange(e)}
               type="text"
               value={input.rating}
               name="rating"
-            ></input>
-            {errors.rating && <p>{errors.rating}</p>}
+            ></Input>
+            {errors.rating && <Error>{errors.rating}</Error>}
           </div>
 
-          <label>Genres:</label>
-          <select onChange={(e) => handleSelectGenres(e)}>
+          <Label>Genres:</Label>
+          <Select onChange={(e) => handleSelectGenres(e)}>
             <option value="default">Genres</option>
             {genres.map((g) => (
               <option key={g.name} value={g.name}>
                 {g.name}
               </option>
             ))}
-          </select>
-          <div>Genres selected:</div>
+          </Select>
+          <Label>Genres selected:</Label>
           <div>
             {input.genres.map((e) => (
-              <div key={e.name}>
+              <Selected key={e.name}>
                 {e.name}{" "}
                 <button
                   onClick={() => {
@@ -177,36 +247,36 @@ export default function Create() {
                 >
                   x
                 </button>
-              </div>
+              </Selected>
             ))}{" "}
           </div>
 
           <div>
-            <label>Platforms:</label>
-            <select onChange={(e) => handleSelectPlatforms(e)}>
+            <Label>Platforms:</Label>
+            <Select onChange={(e) => handleSelectPlatforms(e)}>
               <option value="default">Platforms</option>
               {platforms.map((p) => (
                 <option key={p.name} value={p.name}>
                   {p.name}
                 </option>
               ))}
-            </select>
-            <label>Platforms selected:</label>
+            </Select>
+            <Label>Platforms selected:</Label>
             <ul>
               {input.platforms.map((e) => (
-                <div key={e.platform.name}>
+                <Selected key={e.platform.name}>
                   {e.platform.name}
                   <button onClick={() => handleDeleteP(e)}>x</button>
-                </div>
+                </Selected>
               ))}{" "}
             </ul>
           </div>
 
-          <button disabled={active} type="submit">
+          <Button disabled={active} type="submit">
             Create
-          </button>
+          </Button>
         </form>
-      </div>
-    </div>
+      </Container>
+    </All>
   );
 }
