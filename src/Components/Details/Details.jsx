@@ -19,6 +19,7 @@ const Name = styled.div`
   text-shadow: 5px 5px 5px gray;
   color: white;
   font-size: 250%;
+  
 `;
 const Image = styled.div`
   display: flex;
@@ -30,6 +31,10 @@ const Img = styled.img`
   width: 20vw;
   height: 30vh;
   border-radius: 5px;
+  @media (max-width: 576px) {
+    width: 60vw;
+    height: 30vh;
+  }
 `;
 
 const All = styled.div`
@@ -50,6 +55,9 @@ const ContainerDes = styled.div`
   margin-right: 5%;
   resize: none;
   margin-bottom:1%;
+  @media (max-width: 576px) {
+    width: 80%;
+  }
 `;
 
 const Released = styled.div`
@@ -84,12 +92,18 @@ const ContainerPlat = styled.div`
   width: 15vw;
   background-color: #00000095;
   margin-left: 35vw;
+  @media (max-width: 576px) {
+    width: 30vw;
+  }  
 `;
 
 const ContainerGenres = styled.div`
   color: black;
   width: 15vw;
   background-color: #00000095;
+  @media (max-width: 576px) {
+    width: 25vw;
+  }  
 `;
 
 const ContainerGenrePlatform = styled.div`
@@ -97,6 +111,9 @@ const ContainerGenrePlatform = styled.div`
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   width: 100vw;
+  @media (max-width: 576px) {
+    width: 70vw;
+  }
 `;
 
 const Platforms = styled.div`

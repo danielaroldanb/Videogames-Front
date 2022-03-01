@@ -43,6 +43,9 @@ const Filters = styled.div`
   position: relative;
   left: 45vh;
   width: 50%;
+   @media (max-width: 576px) {
+    left: 13vh;
+  }
 `;
 
 const Cards = styled.div`
@@ -86,6 +89,9 @@ const Select = styled.select`
   letter-spacing: 1px;
   border: 2px solid #7364d2;
   position: relative;
+  @media (max-width: 576px) {
+    width: 22vw;
+  }
 `;
 
 export default function Home() {

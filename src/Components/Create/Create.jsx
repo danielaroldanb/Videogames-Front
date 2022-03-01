@@ -14,6 +14,7 @@ const All = styled.div`
   width: 100vw;
   height: 92vh;
   overflow-x: hidden;
+  
 `;
 
 const Button = styled.button`
@@ -47,6 +48,9 @@ const Input = styled.input`
   background-color: white;
   padding-left: 20%;
   width: 70vh;
+  @media (max-width: 576px) {
+    width: 50vw;
+   } 
 `;
 const Select = styled.select`
   display: block;
@@ -56,6 +60,9 @@ const Select = styled.select`
   background-color: white;
   padding-left: 20%;
   width: 70vh;
+  @media (max-width: 576px) {
+    width: 50vw;
+   } 
 `;
 
 const Selected = styled.div`
@@ -69,6 +76,9 @@ const TextArea = styled.textarea`
   background-color: white;
   padding-left: 20%;
   width: 70vh;
+  @media (max-width: 576px) {
+    width: 50vw;
+   } 
 `;
 
 const Error = styled.p`

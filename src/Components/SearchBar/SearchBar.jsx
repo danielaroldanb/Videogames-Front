@@ -18,6 +18,9 @@ const Input = styled.input`
   box-sizing: border-box;
   padding: 0.5rem 4rem 0.5rem 0.5rem;
   outline: none;
+  @media (max-width: 576px) {
+    width: 200px;
+  }
 `;
 const Button = styled.button`
   position: absolute;
